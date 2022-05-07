@@ -28,7 +28,7 @@ void TempSensor::SensorState( const bool OffFlag )
 
 float TempSensor::GetTemperature()
 {
-    float temp = (m_SensorsPtr->getTempCByIndex(0) - 1.06);
+    float temp = ( m_SensorsPtr->getTempCByIndex(0) );
     if( m_OffFlag )
     {
         Serial.print(F("Heater is off "));
