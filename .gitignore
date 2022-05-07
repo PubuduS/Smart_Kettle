@@ -164,3 +164,6 @@ pip-log.txt
 
 # Ignore commit message
 message.txt
+
+# Ignore secret file
+libraries/SendToFirebase/arduino_secrets.h

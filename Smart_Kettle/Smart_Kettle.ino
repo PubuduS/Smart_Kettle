@@ -1,5 +1,6 @@
 #include <WriteToScreen.h>
 #include <TempSensor.h>
+#include <SendToFirebase.h>
 
 // Pins
 const uint8_t btn_Pin = 3;
@@ -12,6 +13,7 @@ float temperature = 0.0;
 
 WriteToScreen m_Screen;
 TempSensor m_Sensor;
+SendToFirebase m_Firebase;
 
 void setup() 
 {
@@ -26,6 +28,7 @@ void setup()
   
   m_Screen.SetupScreen();  
   m_Sensor.SensorState( false );
+  m_Firebase.SetupFirebase();
 
 }
 
@@ -47,7 +50,10 @@ void loop() {
     m_Screen.ClearScreen();   
     temperature = m_Sensor.GetTemperature();    
     HandleTemp();
+    m_Firebase.FirebaseUpdateTemp( temperature );
   }
+
+  m_Firebase.FirebaseUpdateSystemState( heater_State );
 }
 
 
