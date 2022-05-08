@@ -328,7 +328,7 @@ OPTIMIZE_OUTPUT_SLICE  = NO
 #
 # Note see also the list of default file extension mappings.
 
-EXTENSION_MAPPING      = ino=c
+EXTENSION_MAPPING      = ino=C
 
 # If the MARKDOWN_SUPPORT tag is enabled then doxygen pre-processes all comments
 # according to the Markdown format, which allows for more readable
@@ -867,7 +867,7 @@ WARN_LOGFILE           =
 INPUT                  = ./libraries/LedPanel/ \
                          ./libraries/SendToScreen/ \
                          ./libraries/TempSensor/ \
-						 ./Smart_Kettle/ \
+						 ./Smart_Kettle/Smart_Kettle.ino \
                          ./DoxygenTheme/MainPage.md
 
 # This tag can be used to specify the character encoding of the source files
