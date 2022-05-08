@@ -1,6 +1,8 @@
 #include <WriteToScreen.h>
 #include <TempSensor.h>
-#include <SendToFirebase.h>
+#include <LedPanel.h>
+#include "arduino_secrets.h"
+#include <Firebase_Arduino_WiFiNINA.h>
 
 // Pins
 const uint8_t btn_Pin = 3;
@@ -13,7 +15,10 @@ float temperature = 0.0;
 
 WriteToScreen m_Screen;
 TempSensor m_Sensor;
-SendToFirebase m_Firebase;
+LedPanel m_LedPanel;
+FirebaseData firebaseData;
+
+String m_Path = "/ThermoBot/";
 
 void setup() 
 {
@@ -23,12 +28,25 @@ void setup()
   pinMode( led_Pin, OUTPUT );
   pinMode( buzzer_Pin, OUTPUT );
 
+  Serial.print("Connecting to WiFi…");
+  uint8_t status = WL_IDLE_STATUS;
+  while (status != WL_CONNECTED) {
+    status = WiFi.begin( WIFI_SSID, WIFI_PASSWORD );
+    Serial.print(".");
+    delay(300);
+  }
+  Serial.print(" IP: ");
+  Serial.println( WiFi.localIP() );
+  Serial.println();
+
+  Firebase.begin( FIREBASE_HOST, FIREBASE_AUTH, WIFI_SSID, WIFI_PASSWORD );
+  Firebase.reconnectWiFi(true);
+
   digitalWrite( led_Pin, LOW );
   attachInterrupt( digitalPinToInterrupt( btn_Pin ), ToggleState, RISING );
   
   m_Screen.SetupScreen();  
-  m_Sensor.SensorState( false );
-  m_Firebase.SetupFirebase();
+  m_Sensor.SensorState( false );  
 
 }
 
@@ -48,12 +66,15 @@ void loop() {
   {   
     m_Sensor.SensorState( false );
     m_Screen.ClearScreen();   
-    temperature = m_Sensor.GetTemperature();    
+    temperature = m_Sensor.GetTemperature();
+    FirebaseUpdateTemp( temperature ); 
+    m_LedPanel.ControlTempLED( temperature );
     HandleTemp();
-    m_Firebase.FirebaseUpdateTemp( temperature );
+    
   }
 
-  m_Firebase.FirebaseUpdateSystemState( heater_State );
+  FirebaseUpdateState( heater_State );
+ 
 }
 
 
@@ -72,8 +93,7 @@ void HandleTemp()
     m_Screen.DrawCoffeeAnimation( 50, 32, 0);
   }
   else
-  {
-    
+  {    
     String temp = String(temperature, 2);
     String msg = temp +"C\n";
 
@@ -83,4 +103,28 @@ void HandleTemp()
     noTone( buzzer_Pin );
     m_Sensor.SensorState( false ); 
   }
+}
+
+void FirebaseUpdateTemp( float temp )
+{
+   if( Firebase.setFloat( firebaseData, m_Path + "Temp/", temp ) )
+   {
+        // We don't have to do anything here
+   }
+   else
+   {
+      Serial.println( firebaseData.errorReason() );
+   }
+}
+
+void FirebaseUpdateState( bool state )
+{
+   if( Firebase.setBool( firebaseData, m_Path + "State/", state ) )
+   {
+        // We don't have to do anything here
+   }
+   else
+   {
+      Serial.println( firebaseData.errorReason() );
+   }
 }
