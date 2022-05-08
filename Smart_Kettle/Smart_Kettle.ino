@@ -1,3 +1,4 @@
+/**@file Smart_Kettle.ino */
 #include <WriteToScreen.h>
 #include <TempSensor.h>
 #include <LedPanel.h>
@@ -45,6 +46,7 @@ void setup()
 
   digitalWrite( led_Pin, LOW );
   attachInterrupt( digitalPinToInterrupt( btn_Pin ), ToggleState, RISING );
+  attachInterrupt( digitalPinToInterrupt( led_Pin ), ToggleState, RISING );
   
   m_Screen.SetupScreen();  
   m_Sensor.SensorState( false );  
@@ -60,7 +62,7 @@ void loop() {
 
     //Make sure payload value returned from server is integer
     //This prevent you to get garbage data
-    if( firebaseData.dataType() == "bool" ) 
+    if( firebaseData.dataType() == "boolean" ) 
     {
       m_KeepWarmFlag = firebaseData.boolData();
       m_LedPanel.ControlKeepWarmLED( m_KeepWarmFlag );
@@ -121,7 +123,7 @@ void HandleTemp()
   {
     TurnHeaterOn();
   }
-  else if( temperature < 30.0 )
+  else if( heater_State == true )
   {    
     TurnHeaterOn();
   }

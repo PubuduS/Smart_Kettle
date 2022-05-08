@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        function create () {
+            $.ajax({
+                url:"http://send_sms.php",    //the page containing php script
+                type: "post",    //request type,
+                dataType: 'json',
+                crossDomain:true,
+                data: {registration: "success", name: "xyz", email: "abc@gmail.com"},
+                success:function(result){
+                    console.log(result.abc);
+                }
+            });
+        }
+    </script>
+    
+	<head>
+		<title>Example website</title>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <style type="text/css">* {font-family: Inter;} body {padding: 2em;}</style>
+	</head>
+	<body>
+		<div>
+			<h1>Hello world!</h1>
+			<p>This is a example website.</p>
+            <!-- Hi! -->
+			<p>
+				<a href="https://tiagorangel.com/">Learn More</a>
+			</p>
+            <button type="button" onclick="create()">Click Me</button>
+		</div>
+	</body>
+</html>
