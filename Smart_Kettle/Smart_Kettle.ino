@@ -56,36 +56,50 @@ void setup()
 void loop() {
   // put your main code here, to run repeatedly:
 
-  if( Firebase.getBool( firebaseData, m_Path + "WarmFlag/" ) ) 
+  if( Firebase.getString( firebaseData, m_Path + "WarmFlag/" ) ) 
   {
-    //Success, then read the payload value
-
-    //Make sure payload value returned from server is integer
-    //This prevent you to get garbage data
-    if( firebaseData.dataType() == "boolean" ) 
-    {
-      m_KeepWarmFlag = firebaseData.boolData();
-      m_LedPanel.ControlKeepWarmLED( m_KeepWarmFlag );
-      // Serial.println( m_KeepWarmFlag );
-    }
-
+      if( firebaseData.dataType() == "string")
+      {
+        String val = firebaseData.stringData();
+        if( val == "true")
+        {
+          m_KeepWarmFlag = true;
+        }
+        else
+        {
+           m_KeepWarmFlag = false;
+        }
+        
+        m_LedPanel.ControlKeepWarmLED( m_KeepWarmFlag );
+        Serial.println( m_KeepWarmFlag );
+      }
   } 
   else 
   {
     //Failed, then print out the error detail
     Serial.println( firebaseData.errorReason() );
   }
+
   
   if( heater_State == false )
   {
     m_Sensor.SensorState( true );
     m_Screen.ClearScreen();
     m_Screen.SendToScreen( "Heater OFF", (uint8_t)40, (uint8_t)30, 2 );
+
+   
+    delay(4000);
+    digitalWrite( led_Pin, LOW );
+    noTone( buzzer_Pin );
+    
+    String temp = String(temperature, 2);
+    String msg = temp +"C\n";    
+    m_Screen.ClearScreen();
+    m_Screen.SendToScreen( msg, (uint8_t)40, (uint8_t)30, 2 ); 
+     
     temperature = m_Sensor.GetTemperature();
     FirebaseUpdateTemp( temperature );
-    digitalWrite( led_Pin, LOW );
-    
-    noTone( buzzer_Pin );
+    HandleTemp( false );  
   }
   else
   {   
@@ -94,13 +108,12 @@ void loop() {
     temperature = m_Sensor.GetTemperature();
     FirebaseUpdateTemp( temperature ); 
     m_LedPanel.ControlTempLED( temperature );
-    HandleTemp();
+    HandleTemp( true );
     
   }
   
   m_LedPanel.ControlPowerLED( heater_State );
-  FirebaseUpdateState( heater_State );
- 
+  FirebaseUpdateState( heater_State );   
 }
 
 //! Change the state upon interrup.
@@ -110,23 +123,25 @@ void ToggleState()
 }
 
 //! Change the state based on temperature changes.
-void HandleTemp()
+void HandleTemp( bool holdFlag )
 {
-  if( temperature >= 95.0 )
+  if( temperature >= 95.0 && holdFlag == true )
   {
     digitalWrite( led_Pin, HIGH );
     tone( buzzer_Pin, 1000 );
     m_Sensor.SensorState( true );
     m_Screen.DrawCoffeeAnimation( 50, 32, 0);
   }
-  else if( m_KeepWarmFlag == true && temperature <= 88.0 && temperature >= 80.0 )
-  {
-    TurnHeaterOn();
+  else if( m_KeepWarmFlag == true && (temperature <= 88.0 && temperature >= 80.0) )
+  {    
+    heater_State = true;
+    TurnHeaterOn();    
   }
-  else if( heater_State == true )
+  else if( heater_State == true  )
   {    
     TurnHeaterOn();
   }
+
 }
 
 //! Turn on the heater.
@@ -134,7 +149,7 @@ void TurnHeaterOn()
 {
     String temp = String(temperature, 2);
     String msg = temp +"C\n";
-
+    heater_State = true;
     m_Screen.ClearScreen();
     m_Screen.SendToScreen( msg, (uint8_t)40, (uint8_t)30, 2 ); 
     digitalWrite( led_Pin, LOW );
