@@ -1,0 +1,7 @@
+<map id="TempSensor::SensorState" name="TempSensor::SensorState">
+<area shape="rect" id="node1" title="Determine whether relay should be on or off." alt="" coords="396,56,571,83"/>
+<area shape="rect" id="node2" href="$Smart__Kettle_8ino.html#a0b9fc5edbe1b9588fd9ee428191e37dd" title="Change the state based on temperature changes." alt="" coords="100,31,196,57"/>
+<area shape="rect" id="node3" href="$Smart__Kettle_8ino.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,5,52,32"/>
+<area shape="rect" id="node4" href="$Smart__Kettle_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="269,81,323,108"/>
+<area shape="rect" id="node5" href="$Smart__Kettle_8ino.html#ac4eca1fcce21ea248d25bd0cd418f3ed" title="Turn on the heater." alt="" coords="244,132,348,159"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="WriteToScreen::DrawCoffeeAnimation" name="WriteToScreen::DrawCoffeeAnimation">
+<area shape="rect" id="node1" title="Draw a hot coffee mug animation on the screen." alt="" coords="244,5,425,47"/>
+<area shape="rect" id="node2" href="$Smart__Kettle_8ino.html#a0b9fc5edbe1b9588fd9ee428191e37dd" title="Change the state based on temperature changes." alt="" coords="100,13,196,39"/>
+<area shape="rect" id="node3" href="$Smart__Kettle_8ino.html#afe461d27b9c48d5921c00d521181f12f" title=" " alt="" coords="5,13,52,39"/>
+</map>

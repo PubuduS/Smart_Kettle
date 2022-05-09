@@ -1,0 +1,6 @@
+<map id="TurnHeaterOn" name="TurnHeaterOn">
+<area shape="rect" id="node1" title="Turn on the heater." alt="" coords="5,56,109,83"/>
+<area shape="rect" id="node2" href="$classWriteToScreen.html#a89b872fd2a8a186cd7e05316f08721b3" title="Clear the content buffer to clear the screen." alt="" coords="165,5,350,32"/>
+<area shape="rect" id="node3" href="$classWriteToScreen.html#af42fa7fb8b1c188e73b3ce7e54ee7ad9" title="Accept incoming message and display the message in screen." alt="" coords="157,56,357,83"/>
+<area shape="rect" id="node4" href="$classTempSensor.html#af8e8b64c49c887c2b8c78299e035bf5a" title="Determine whether relay should be on or off." alt="" coords="170,107,345,133"/>
+</map>

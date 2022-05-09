@@ -1,0 +1,8 @@
+<map id="HandleTemp" name="HandleTemp">
+<area shape="rect" id="node1" title="Change the state based on temperature changes." alt="" coords="5,71,101,98"/>
+<area shape="rect" id="node2" href="$classWriteToScreen.html#a8892ae54bef2d5273107f05ba863e2f3" title="Draw a hot coffee mug animation on the screen." alt="" coords="149,5,331,47"/>
+<area shape="rect" id="node3" href="$classTempSensor.html#af8e8b64c49c887c2b8c78299e035bf5a" title="Determine whether relay should be on or off." alt="" coords="391,71,566,98"/>
+<area shape="rect" id="node4" href="$Smart__Kettle_8ino.html#ac4eca1fcce21ea248d25bd0cd418f3ed" title="Turn on the heater." alt="" coords="188,122,292,149"/>
+<area shape="rect" id="node5" href="$classWriteToScreen.html#a89b872fd2a8a186cd7e05316f08721b3" title="Clear the content buffer to clear the screen." alt="" coords="386,122,571,149"/>
+<area shape="rect" id="node6" href="$classWriteToScreen.html#af42fa7fb8b1c188e73b3ce7e54ee7ad9" title="Accept incoming message and display the message in screen." alt="" coords="379,173,579,199"/>
+</map>

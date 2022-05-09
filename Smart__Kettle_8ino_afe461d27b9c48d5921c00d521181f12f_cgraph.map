@@ -1,0 +1,15 @@
+<map id="loop" name="loop">
+<area shape="rect" id="node1" title=" " alt="" coords="5,346,52,373"/>
+<area shape="rect" id="node2" href="$classWriteToScreen.html#a89b872fd2a8a186cd7e05316f08721b3" title="Clear the content buffer to clear the screen." alt="" coords="598,26,783,53"/>
+<area shape="rect" id="node3" href="$classLedPanel.html#a6d3bb4d190724f22c5cec81f668b122b" title="Indicate the keep warm function is on or off." alt="" coords="100,321,313,348"/>
+<area shape="rect" id="node4" href="$classLedPanel.html#a380753838f31bcc26aeb9e384bf73d13" title="Indicate power is on or off." alt="" coords="113,372,300,398"/>
+<area shape="rect" id="node5" href="$classLedPanel.html#a59fd670b7f5ad8950377e5a8b2159d31" title="Display Led according to the temperature." alt="" coords="115,422,298,449"/>
+<area shape="rect" id="node6" href="$Smart__Kettle_8ino.html#a26116e0d007bb46fe068d738d649f053" title="Send the state data to database." alt="" coords="134,473,279,500"/>
+<area shape="rect" id="node7" href="$Smart__Kettle_8ino.html#a6116a3226fc8acdc91ddd0323e01cc32" title="Send the temperature data to database." alt="" coords="133,524,280,550"/>
+<area shape="rect" id="node8" href="$classTempSensor.html#ad02eee4a1dd0f2971c664eaf160576b1" title="Periodically polls for temperature Convert it to Celsius and return it." alt="" coords="109,574,305,601"/>
+<area shape="rect" id="node9" href="$Smart__Kettle_8ino.html#a0b9fc5edbe1b9588fd9ee428191e37dd" title="Change the state based on temperature changes." alt="" coords="159,182,255,209"/>
+<area shape="rect" id="node11" href="$classTempSensor.html#af8e8b64c49c887c2b8c78299e035bf5a" title="Determine whether relay should be on or off." alt="" coords="603,102,778,129"/>
+<area shape="rect" id="node13" href="$classWriteToScreen.html#af42fa7fb8b1c188e73b3ce7e54ee7ad9" title="Accept incoming message and display the message in screen." alt="" coords="591,212,791,238"/>
+<area shape="rect" id="node10" href="$classWriteToScreen.html#a8892ae54bef2d5273107f05ba863e2f3" title="Draw a hot coffee mug animation on the screen." alt="" coords="361,204,543,246"/>
+<area shape="rect" id="node12" href="$Smart__Kettle_8ino.html#ac4eca1fcce21ea248d25bd0cd418f3ed" title="Turn on the heater." alt="" coords="400,102,504,129"/>
+</map>

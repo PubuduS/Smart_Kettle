@@ -1,0 +1,6 @@
+<map id="setup" name="setup">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,60,83"/>
+<area shape="rect" id="node2" href="$classTempSensor.html#af8e8b64c49c887c2b8c78299e035bf5a" title="Determine whether relay should be on or off." alt="" coords="115,5,290,32"/>
+<area shape="rect" id="node3" href="$classWriteToScreen.html#a48850bf1830c9c20bbfe1f78342d2a07" title="Handles SSD1306 Memory Allocation Error SSD1306_SWITCHCAPVCC = generate display voltage from 3...." alt="" coords="108,56,297,83"/>
+<area shape="rect" id="node4" href="$Smart__Kettle_8ino.html#a3f975224d8f995f03dca1dc139314488" title="Change the state upon interrup." alt="" coords="157,107,249,133"/>
+</map>
