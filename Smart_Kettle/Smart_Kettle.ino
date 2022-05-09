@@ -1,4 +1,4 @@
-/**@file Smart_Kettle.ino */
+//! @file Smart_Kettle.ino
 #include <WriteToScreen.h>
 #include <TempSensor.h>
 #include <LedPanel.h>
@@ -99,6 +99,7 @@ void loop() {
      
     temperature = m_Sensor.GetTemperature();
     FirebaseUpdateTemp( temperature );
+    m_LedPanel.ControlTempLED( temperature );
     HandleTemp( false );  
   }
   else

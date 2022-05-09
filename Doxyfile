@@ -867,7 +867,7 @@ WARN_LOGFILE           =
 INPUT                  = ./libraries/LedPanel/ \
                          ./libraries/SendToScreen/ \
                          ./libraries/TempSensor/ \
-						 ./Smart_Kettle/Smart_Kettle.ino \
+						 ./Smart_Kettle/ \
                          ./DoxygenTheme/MainPage.md
 
 # This tag can be used to specify the character encoding of the source files

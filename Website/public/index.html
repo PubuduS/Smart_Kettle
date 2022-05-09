@@ -203,19 +203,5 @@
 
 
 </script>
-<script>
-    function create () {
-      console.log("Inside JS function");
-        $.ajax({
-            url:"send_sms.php",    //the page containing php script
-            type: "post",    //request type,
-            dataType: 'json',
-            data: {registration: "success", name: "xyz", email: "abc@gmail.com"},
-            success:function(result){
-                console.log(result.abc);
-            }
-        });
-    }
-</script>
-<button type="button" onclick="create()">Click Me</button>
+
 </html>
