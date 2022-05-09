@@ -58,7 +58,7 @@ void loop() {
 
   if( Firebase.getString( firebaseData, m_Path + "WarmFlag/" ) ) 
   {
-      if( firebaseData.dataType() == "string")
+      if( firebaseData.dataType() == "string" )
       {
         String val = firebaseData.stringData();
         if( val == "true")
